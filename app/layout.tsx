@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-// import "../public/styles/style.css";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
