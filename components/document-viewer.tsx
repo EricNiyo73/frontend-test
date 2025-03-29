@@ -8,7 +8,6 @@ import type { Annotation, AnnotationType } from "@/lib/types";
 import { Loader2 } from "lucide-react";
 import CommentDialog from "@/components/comment-dialog";
 
-// Dynamically import react-pdf components with no SSR
 const PDFComponents = dynamic(() => import("@/components/pdf-components"), {
 	ssr: false,
 	loading: () => (
@@ -65,11 +64,9 @@ export default function DocumentViewer({ pdfUrl, currentTool, annotations, onAdd
 				type: "signature",
 				pageIndex,
 				position: { x, y },
-				content: "Signature placeholder", // In a real app, this would be the signature data
+				content: "Signature placeholder",
 			});
 		} else if (currentTool === "highlight" || currentTool === "underline") {
-			// In a real app, we would detect text under the cursor
-			// For this example, we'll just add a dummy annotation
 			onAddAnnotation({
 				type: currentTool,
 				pageIndex,

@@ -8,7 +8,6 @@ import type { AnnotationType, Annotation } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import { Download, FileText } from "lucide-react";
 
-// Dynamically import DocumentViewer with no SSR
 const DocumentViewer = dynamic(() => import("@/components/document-viewer"), { ssr: false });
 
 export default function Home() {
@@ -38,13 +37,7 @@ export default function Home() {
 		setIsExporting(true);
 
 		try {
-			// In a real implementation, we would use a PDF library to apply annotations
-			// and return a modified PDF. For this example, we'll simulate the export.
-
-			// Simulating processing time
 			await new Promise((resolve) => setTimeout(resolve, 1500));
-
-			// Create a download link for the original PDF (in a real app, this would be the annotated PDF)
 			const link = document.createElement("a");
 			link.href = pdfUrl as string;
 			link.download = `annotated-${file.name}`;

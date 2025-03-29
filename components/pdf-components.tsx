@@ -9,7 +9,6 @@ import AnnotationLayer from "@/components/annotation-layer";
 import type { MutableRefObject } from "react";
 import * as pdfjsLib from "pdfjs-dist";
 pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
-// Set up the worker for PDF.js - use a public URL that's more reliable
 pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 
 interface PDFComponentsProps {
