@@ -59,7 +59,7 @@ export default function PDFComponents({ pdfUrl, pageNumber, scale, onDocumentLoa
 	if (!validatedUrl) {
 		return (
 			<div className="flex items-center justify-center w-full h-40">
-				<Loader2 className="w-8 h-8 animate-spin text-orange-500" />
+				<Loader2 className="w-8 h-8 animate-spin text-accent" />
 				<span className="ml-2 text-jacarta-700 dark:text-white">Preparing document...</span>
 			</div>
 		);
@@ -69,7 +69,7 @@ export default function PDFComponents({ pdfUrl, pageNumber, scale, onDocumentLoa
 		<Document
 			file={validatedUrl}
 			onLoadSuccess={onDocumentLoadSuccess}
-			loading={<Loader2 className="w-8 h-8 animate-spin text-orange-500" />}
+			loading={<Loader2 className="w-8 h-8 animate-spin text-accent" />}
 			error={() => (
 				<div className="p-4 text-center">
 					<p className="text-red mb-2">Error loading PDF</p>

@@ -13,7 +13,7 @@ const PDFComponents = dynamic(() => import("@/components/pdf-components"), {
 	ssr: false,
 	loading: () => (
 		<div className="flex items-center justify-center w-full h-40">
-			<Loader2 className="w-8 h-8 animate-spin text-orange-500" />
+			<Loader2 className="w-8 h-8 animate-spin text-accent" />
 			<span className="ml-2 text-jacarta-700 dark:text-white">Loading PDF viewer...</span>
 		</div>
 	),
@@ -106,7 +106,7 @@ export default function DocumentViewer({ pdfUrl, currentTool, annotations, onAdd
 		<div className="flex flex-col items-center w-full">
 			{isLoading && (
 				<div className="flex items-center justify-center w-full h-40">
-					<Loader2 className="w-8 h-8 animate-spin text-orange-500" />
+					<Loader2 className="w-8 h-8 animate-spin text-accent" />
 					<span className="ml-2 text-jacarta-700 dark:text-white">Loading document...</span>
 				</div>
 			)}

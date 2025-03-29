@@ -81,15 +81,15 @@
 }
 
 .annotation-highlight {
-	@apply bg-orange-500 bg-opacity-30;
+	@apply bg-accent bg-opacity-30;
 }
 
 .annotation-underline {
-	@apply border-b-2 border-orange-500;
+	@apply border-b-2 border-accent;
 }
 
 .annotation-comment {
-	@apply bg-orange-500 text-white rounded-full;
+	@apply bg-accent text-white rounded-full;
 }
 
 .annotation-signature {
@@ -101,7 +101,7 @@
 }
 
 .tool-button.active {
-	@apply bg-orange-500 text-white;
+	@apply bg-accent text-white;
 }
 
 .tool-button:hover:not(.active) {
