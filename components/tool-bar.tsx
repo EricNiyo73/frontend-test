@@ -36,7 +36,8 @@ export default function ToolBar({ currentTool, onToolChange }: ToolBarProps) {
 								variant={currentTool === tool.id ? "default" : "ghost"}
 								size="icon"
 								onClick={() => onToolChange(tool.id)}
-								className={`h-10 w-10 ${currentTool === tool.id ? "bg-accent-lighter hover:bg-accent-lighter-dark text-white" : "text-jacarta-700 dark:text-white"}`}
+								className={`h-10 w-10 ${currentTool === tool.id ? "bg-orange-500 hover:bg-accent-dark text-white" : "text-jacarta-700 dark:text-white"}`}
+								style={currentTool === tool.id ? { backgroundColor: "#f36a46" } : {}}
 							>
 								{tool.icon}
 								<span className="sr-only">{tool.name}</span>

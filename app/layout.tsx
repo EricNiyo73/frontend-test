@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-// import "./globals.css";
-import "../public/styles/style.css";
+import "./globals.css";
+// import "../public/styles/style.css";
 import { Toaster } from "@/components/ui/sonner";
 export const metadata: Metadata = {
 	title: "DocSign - PDF Annotation Tool",

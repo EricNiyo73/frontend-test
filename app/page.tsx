@@ -68,15 +68,15 @@ export default function Home() {
 
 					<div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl w-full">
 						<div className="flex flex-col items-center text-center p-6 bg-white dark:bg-jacarta-700 rounded-2xl shadow-md">
-							<div className="w-12 h-12 bg-orange-100 dark:bg-jacarta-600 rounded-full flex items-center justify-center mb-4">
-								<FileText className="w-6 h-6 text-accent" />
+							<div className="w-12 h-12 bg-orange-100 dark:bg-jacarta-600 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(243, 106, 70, 0.1)" }}>
+								<FileText className="w-6 h-6 text-orange-500" style={{ color: "#f36a46" }} />
 							</div>
 							<h3 className="text-lg font-bold text-jacarta-700 dark:text-white mb-2">Upload PDF</h3>
 							<p className="text-sm text-jacarta-500 dark:text-jacarta-300">Drag & drop or select your PDF document to get started</p>
 						</div>
 
 						<div className="flex flex-col items-center text-center p-6 bg-white dark:bg-jacarta-700 rounded-2xl shadow-md">
-							<div className="w-12 h-12 bg-orange-100 dark:bg-jacarta-600 rounded-full flex items-center justify-center mb-4">
+							<div className="w-12 h-12 bg-orange-100 dark:bg-jacarta-600 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(243, 106, 70, 0.1)" }}>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="24"
@@ -87,7 +87,8 @@ export default function Home() {
 									strokeWidth="2"
 									strokeLinecap="round"
 									strokeLinejoin="round"
-									className="w-6 h-6 text-accent"
+									className="w-6 h-6 text-orange-500"
+									style={{ color: "#f36a46" }}
 								>
 									<path d="m3 15 5.12-5.12A3 3 0 0 1 10.24 9H13a2 2 0 1 1 0 4h-2.5m4-.68 4.17-4.89a1.88 1.88 0 0 1 2.92 2.36l-4.2 4.6a2 2 0 0 1-1.58.61h-1.5"></path>
 								</svg>
@@ -97,8 +98,8 @@ export default function Home() {
 						</div>
 
 						<div className="flex flex-col items-center text-center p-6 bg-white dark:bg-jacarta-700 rounded-2xl shadow-md">
-							<div className="w-12 h-12 bg-orange-100 dark:bg-jacarta-600 rounded-full flex items-center justify-center mb-4">
-								<Download className="w-6 h-6 text-accent" />
+							<div className="w-12 h-12 bg-orange-100 dark:bg-jacarta-600 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "rgba(243, 106, 70, 0.1)" }}>
+								<Download className="w-6 h-6 text-orange-500" style={{ color: "#f36a46" }} />
 							</div>
 							<h3 className="text-lg font-bold text-jacarta-700 dark:text-white mb-2">Export & Share</h3>
 							<p className="text-sm text-jacarta-500 dark:text-jacarta-300">Download your annotated document or share it directly</p>
@@ -124,7 +125,7 @@ export default function Home() {
 								<div className="text-sm font-medium text-jacarta-700 dark:text-white truncate max-w-[200px] md:max-w-xs">{file.name}</div>
 							</div>
 
-							<Button onClick={exportPdf} disabled={isExporting} className="bg-accent hover:bg-accent-dark text-white flex items-center gap-2">
+							<Button onClick={exportPdf} disabled={isExporting} className="bg-orange-500 hover:bg-accent-dark text-white flex items-center gap-2" style={{ backgroundColor: "#f36a46" }}>
 								<Download size={16} />
 								{isExporting ? "Exporting..." : "Export PDF"}
 							</Button>

@@ -10,8 +10,8 @@ const config: Config = {
 			xl: "1202px",
 		},
 		fontFamily: {
-			display: ['CalSans-SemiBold"', "sans-serif"],
-			body: ['DM Sans"', "sans-serif"],
+			display: ['"CalSans-SemiBold"', "sans-serif"],
+			body: ['"DM Sans"', "sans-serif"],
 		},
 		container: {
 			center: true,
@@ -22,42 +22,42 @@ const config: Config = {
 			current: "currentColor",
 			white: "#ffffff",
 			accent: "#f36a46",
-			"accent-dark": "#ff8f71",
+			"accent-dark": "#e05535",
 			"raisin-black": "#242124",
-			"accent-light": "#ff9a7c",
-			"accent-lighter": "#f36a46",
+			"accent-light": "#f57c5c",
+			"accent-lighter": "#f68e72",
 			"light-base": "#f5f8fa",
 			green: "#10b981",
 			orange: "#FEB240",
 			"orange-bright": "#FA6D1E",
-			"orange-100": "#fffaf0",
-			"orange-500": "#ffa500",
+			"orange-100": "#fff0eb",
+			"orange-500": "#f36a46",
 			red: "#EF4444",
 			yellow: "#FBBF24",
 			blue: "#428AF8",
 			gray: {
-				"50": "#F9FAFB",
-				"100": "#F3F4F6",
-				"200": "#E5E7EB",
-				"300": "#D1D5DB",
-				"400": "#9CA3AF",
-				"500": "#6B7280",
-				"600": "#4B5563",
-				"700": "#374151",
-				"800": "#1F2937",
+				50: "#F9FAFB",
+				100: "#F3F4F6",
+				200: "#E5E7EB",
+				300: "#D1D5DB",
+				400: "#9CA3AF",
+				500: "#6B7280",
+				600: "#4B5563",
+				700: "#374151",
+				800: "#1F2937",
 			},
 			jacarta: {
-				"50": "#F4F4F6",
-				"100": "#E7E8EC",
-				"200": "#C4C5CF",
-				"300": "#A1A2B3",
-				"400": "#7D7F96",
-				"500": "#5A5D79",
-				"600": "#363A5D",
-				"700": "#131740",
-				"800": "#101436",
-				"900": "#0D102D",
 				base: "#5A5D79",
+				50: "#F4F4F6",
+				100: "#E7E8EC",
+				200: "#C4C5CF",
+				300: "#A1A2B3",
+				400: "#7D7F96",
+				500: "#5A5D79",
+				600: "#363A5D",
+				700: "#131740",
+				800: "#101436",
+				900: "#0D102D",
 			},
 		},
 		boxShadow: {
@@ -68,95 +68,25 @@ const config: Config = {
 			lg: "0px 4px 6px -4px rgba(13, 16, 45, 0.1), 0px 10px 15px -3px rgba(13, 16, 45, 0.1)",
 			xl: "0px 8px 10px -6px rgba(13, 16, 45, 0.1), 0px 20px 25px -5px rgba(13, 16, 45, 0.1)",
 			"2xl": "0px 25px 50px -12px rgba(13, 16, 45, 0.1), 0px 12px 24px 0px rgba(13, 16, 45, 0.1)",
-			"accent-volume": "5px 5px 10px rgba(213, 106, 213, 0.25), inset 2px 2px 6px #f08d8d, inset -5px -5px 10px #e43636",
+			"accent-volume": "5px 5px 10px rgba(243, 106, 70, 0.25), inset 2px 2px 6px #f57c5c, inset -5px -5px 10px #e05535",
 			"white-volume": "5px 5px 10px rgba(213, 106, 212, 0.25), inset 2px 2px 6px #EEF1F9, inset -5px -5px 10px #DFE3EF",
 		},
 		fontSize: {
 			xxs1: "0.5rem",
-			xxs: [
-				"0.625rem",
-				{
-					lineHeight: "normal",
-				},
-			],
-			xs: [
-				"0.75rem",
-				{
-					lineHeight: "normal",
-				},
-			],
-			"2xs": [
-				"0.8125rem",
-				{
-					lineHeight: "normal",
-				},
-			],
-			sm: [
-				"0.875rem",
-				{
-					lineHeight: "normal",
-				},
-			],
-			base: [
-				"1rem",
-				{
-					lineHeight: "normal",
-				},
-			],
-			md: [
-				"1.125rem",
-				{
-					lineHeight: "normal",
-				},
-			],
-			lg: [
-				"1.25rem",
-				{
-					lineHeight: "1.5",
-				},
-			],
-			xl: [
-				"1.5rem",
-				{
-					lineHeight: "normal",
-				},
-			],
-			"2xl": [
-				"1.75rem",
-				{
-					lineHeight: "normal",
-				},
-			],
-			"3xl": [
-				"2rem",
-				{
-					lineHeight: "normal",
-				},
-			],
-			"4xl": [
-				"2.25rem",
-				{
-					lineHeight: "normal",
-				},
-			],
-			"5xl": [
-				"2.5rem",
-				{
-					lineHeight: "normal",
-				},
-			],
-			"6xl": [
-				"3.5rem",
-				{
-					lineHeight: "normal",
-				},
-			],
-			"7xl": [
-				"4.25rem",
-				{
-					lineHeight: "normal",
-				},
-			],
+			xxs: ["0.625rem", { lineHeight: "normal" }],
+			xs: ["0.75rem", { lineHeight: "normal" }],
+			"2xs": ["0.8125rem", { lineHeight: "normal" }],
+			sm: ["0.875rem", { lineHeight: "normal" }],
+			base: ["1rem", { lineHeight: "normal" }],
+			md: ["1.125rem", { lineHeight: "normal" }],
+			lg: ["1.25rem", { lineHeight: "1.5" }],
+			xl: ["1.5rem", { lineHeight: "normal" }],
+			"2xl": ["1.75rem", { lineHeight: "normal" }],
+			"3xl": ["2rem", { lineHeight: "normal" }],
+			"4xl": ["2.25rem", { lineHeight: "normal" }],
+			"5xl": ["2.5rem", { lineHeight: "normal" }],
+			"6xl": ["3.5rem", { lineHeight: "normal" }],
+			"7xl": ["4.25rem", { lineHeight: "normal" }],
 		},
 		extend: {
 			borderRadius: {
@@ -185,70 +115,39 @@ const config: Config = {
 			},
 			keyframes: {
 				fly: {
-					"0%, 100%": {
-						transform: "translateY(5%)",
-					},
-					"50%": {
-						transform: "translateY(0)",
-					},
+					"0%, 100%": { transform: "translateY(5%)" },
+					"50%": { transform: "translateY(0)" },
 				},
 				marquee: {
-					"0%": {
-						transform: "translateX(0)",
-					},
-					to: {
-						transform: "translateX(-2322px)",
-					},
+					"0%": { transform: "translateX(0)" },
+					to: { transform: "translateX(-2322px)" },
 				},
 				marqueeRight: {
-					"0%": {
-						transform: "translateX(-2322px)",
-					},
-					to: {
-						transform: "translateX(0)",
-					},
+					"0%": { transform: "translateX(-2322px)" },
+					to: { transform: "translateX(0)" },
 				},
 				marqueeVertical: {
-					"0%": {
-						transform: "translateY(0)",
-					},
-					"100%": {
-						transform: "translateY(-100%)",
-					},
+					"0%": { transform: "translateY(0)" },
+					"100%": { transform: "translateY(-100%)" },
 				},
 				marqueeUp: {
-					"0%": {
-						transform: "translateY(0)",
-					},
-					"100%": {
-						transform: "translateY(-100%)",
-					},
+					"0%": { transform: "translateY(0)" },
+					"100%": { transform: "translateY(-100%)" },
 				},
+
 				heartBeat: {
-					"0%, 40%, 80%, 100%": {
-						transform: "scale(1.1)",
-					},
-					"20%, 60%": {
-						transform: "scale(.8)",
-					},
+					"0%, 40%, 80%, 100%": { transform: "scale(1.1)" },
+					"20%, 60%": { transform: "scale(.8)" },
 				},
 				progress: {
-					"0%": {
-						width: "0%",
-					},
-					"100%": {
-						width: "100%",
-					},
+					"0%": { width: "0%" },
+					"100%": { width: "100%" },
 				},
 				gradient: {
-					"100%": {
-						backgroundPosition: "200% center",
-					},
+					"100%": { backgroundPosition: "200% center" },
 				},
 				gradientDiagonal: {
-					"100%": {
-						backgroundPosition: "200% center",
-					},
+					"100%": { backgroundPosition: "200% center" },
 				},
 			},
 			colors: {
@@ -284,13 +183,6 @@ const config: Config = {
 				card: {
 					DEFAULT: "hsl(var(--card))",
 					foreground: "hsl(var(--card-foreground))",
-				},
-				chart: {
-					"1": "hsl(var(--chart-1))",
-					"2": "hsl(var(--chart-2))",
-					"3": "hsl(var(--chart-3))",
-					"4": "hsl(var(--chart-4))",
-					"5": "hsl(var(--chart-5))",
 				},
 			},
 		},

@@ -22,7 +22,7 @@
 		--muted: 210 40% 96.1%;
 		--muted-foreground: 215.4 16.3% 46.9%;
 
-		--accent: 39 100% 50%;
+		--accent: 12 87% 62%;
 		--accent-foreground: 0 0% 100%;
 
 		--destructive: 0 84.2% 60.2%;
@@ -54,7 +54,7 @@
 		--muted: 217.2 32.6% 17.5%;
 		--muted-foreground: 215 20.2% 65.1%;
 
-		--accent: 39 100% 50%;
+		--accent: 12 87% 62%;
 		--accent-foreground: 0 0% 100%;
 
 		--destructive: 0 62.8% 30.6%;
@@ -81,15 +81,15 @@
 }
 
 .annotation-highlight {
-	@apply bg-accent bg-opacity-30;
+	@apply bg-orange-500 bg-opacity-30;
 }
 
 .annotation-underline {
-	@apply border-b-2 border-accent;
+	@apply border-b-2 border-orange-500;
 }
 
 .annotation-comment {
-	@apply bg-accent text-white rounded-full;
+	@apply bg-orange-500 text-white rounded-full;
 }
 
 .annotation-signature {
@@ -101,7 +101,7 @@
 }
 
 .tool-button.active {
-	@apply bg-accent text-white;
+	@apply bg-orange-500 text-white;
 }
 
 .tool-button:hover:not(.active) {
