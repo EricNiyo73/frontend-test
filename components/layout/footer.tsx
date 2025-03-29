@@ -22,7 +22,7 @@ export default function Footer() {
 									<path d="m22 10-7.5 7.5L13 16" />
 								</svg>
 							</div>
-							<span className="text-base font-bold text-jacarta-700 dark:text-white">DocSign</span>
+							<span className="text-base font-bold text-jacarta-700 dark:text-white">NEDocSign</span>
 						</Link>
 						<p className="text-sm text-jacarta-500 dark:text-jacarta-300 mb-4">The easiest way to annotate, sign, and share PDF documents online.</p>
 						<div className="flex gap-4">
@@ -98,7 +98,7 @@ export default function Footer() {
 				</div>
 
 				<div className="mt-8 pt-6 border-t border-jacarta-100 dark:border-jacarta-700">
-					<p className="text-sm text-center text-jacarta-500 dark:text-jacarta-300">© {new Date().getFullYear()} DocSign. All rights reserved.</p>
+					<p className="text-sm text-center text-jacarta-500 dark:text-jacarta-300">© {new Date().getFullYear()} NEDocSign. All rights reserved.</p>
 				</div>
 			</div>
 		</footer>

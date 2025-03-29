@@ -7,7 +7,7 @@ import "./globals.css";
 // import "../public/styles/style.css";
 import { Toaster } from "@/components/ui/sonner";
 export const metadata: Metadata = {
-	title: "DocSign - PDF Annotation Tool",
+	title: "NEDocSign - PDF Annotation Tool",
 	description: "Upload, annotate, and sign PDF documents with ease",
 };
 

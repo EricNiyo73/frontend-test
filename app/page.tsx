@@ -7,6 +7,8 @@ import ToolBar from "@/components/tool-bar";
 import type { AnnotationType, Annotation } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import { Download, FileText } from "lucide-react";
+// Import PDF-LIB for PDF manipulation
+import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 
 const DocumentViewer = dynamic(() => import("@/components/document-viewer"), { ssr: false });
 
@@ -31,17 +33,167 @@ export default function Home() {
 		setAnnotations([...annotations, annotation]);
 	};
 
+	const dataURLToBytes = async (dataURL: string) => {
+		const response = await fetch(dataURL);
+		const blob = await response.blob();
+		return new Uint8Array(await blob.arrayBuffer());
+	};
+
 	const exportPdf = async () => {
 		if (!file) return;
 
 		setIsExporting(true);
 
 		try {
-			await new Promise((resolve) => setTimeout(resolve, 1500));
-			const link = document.createElement("a");
-			link.href = pdfUrl as string;
-			link.download = `annotated-${file.name}`;
-			link.click();
+			const fileArrayBuffer = await file.arrayBuffer();
+
+			const pdfDoc = await PDFDocument.load(fileArrayBuffer);
+
+			const pages = pdfDoc.getPages();
+
+			const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+			const italicFont = await pdfDoc.embedFont(StandardFonts.HelveticaOblique);
+
+			// Process each annotation and add it to the PDF
+			for (const annotation of annotations) {
+				if (annotation.pageIndex < 0 || annotation.pageIndex >= pages.length) {
+					console.warn(`Skipping annotation at invalid page index: ${annotation.pageIndex}`);
+					continue;
+				}
+				const page = pages[annotation.pageIndex];
+
+				// Get page dimensions
+				const { width, height } = page.getSize();
+				const pdfX = annotation.position.x;
+				const pdfY = height - annotation.position.y;
+
+				// Add annotation based on type
+				switch (annotation.type) {
+					case "highlight":
+						page.drawRectangle({
+							x: pdfX,
+							y: pdfY - 20,
+							width: 100,
+							height: 20,
+							color: rgb(1, 0.8, 0.2),
+							opacity: 0.3,
+						});
+						break;
+
+					case "underline":
+						// Add underline annotation
+						page.drawLine({
+							start: { x: pdfX, y: pdfY },
+							end: { x: pdfX + 100, y: pdfY },
+							thickness: 2,
+							color: rgb(1, 0.5, 0.2),
+						});
+						break;
+
+					case "comment":
+						// Draw comment icon
+						page.drawCircle({
+							x: pdfX,
+							y: pdfY,
+							size: 12,
+							color: rgb(0.4, 0.6, 0.9),
+						});
+
+						// Add comment indicator
+						page.drawText("💬", {
+							x: pdfX - 6,
+							y: pdfY - 6,
+							size: 10,
+							font,
+						});
+
+						// Add comment content as a note
+						if (annotation.content) {
+							page.drawText(annotation.content, {
+								x: pdfX + 15,
+								y: pdfY,
+								size: 8,
+								font,
+								color: rgb(0.3, 0.3, 0.3),
+								maxWidth: 100,
+							});
+						}
+						break;
+
+					case "signature":
+						if (annotation.content && annotation.content.startsWith("data:image/")) {
+							try {
+								const signatureBytes = await dataURLToBytes(annotation.content);
+								const signatureImage = await pdfDoc.embedPng(signatureBytes);
+								const sigDims = signatureImage.scale(0.5);
+
+								// Draw the signature image
+								page.drawImage(signatureImage, {
+									x: pdfX,
+									y: pdfY - sigDims.height,
+									width: sigDims.width,
+									height: sigDims.height,
+								});
+							} catch (err) {
+								console.error("Error embedding signature:", err);
+								// Fallback to placeholder if signature embedding fails
+								page.drawRectangle({
+									x: pdfX,
+									y: pdfY - 40,
+									width: 150,
+									height: 40,
+									borderColor: rgb(0.5, 0.5, 0.5),
+									borderWidth: 1,
+									color: rgb(0.98, 0.98, 0.98),
+									opacity: 0.8,
+								});
+
+								page.drawText("Signature (failed to embed)", {
+									x: pdfX + 10,
+									y: pdfY - 25,
+									size: 10,
+									font: italicFont,
+									color: rgb(0.5, 0.5, 0.5),
+								});
+							}
+						} else {
+							page.drawRectangle({
+								x: pdfX,
+								y: pdfY - 40,
+								width: 150,
+								height: 40,
+								borderColor: rgb(0.5, 0.5, 0.5),
+								borderWidth: 1,
+								color: rgb(0.98, 0.98, 0.98),
+								opacity: 0.8,
+							});
+
+							page.drawText("Signature", {
+								x: pdfX + 50,
+								y: pdfY - 25,
+								size: 12,
+								font: italicFont,
+								color: rgb(0.5, 0.5, 0.5),
+							});
+						}
+						break;
+				}
+			}
+
+			const modifiedPdfBytes = await pdfDoc.save();
+
+			const modifiedPdfBlob = new Blob([modifiedPdfBytes], { type: "application/pdf" });
+
+			const modifiedPdfUrl = URL.createObjectURL(modifiedPdfBlob);
+
+			const downloadLink = document.createElement("a");
+			downloadLink.href = modifiedPdfUrl;
+			downloadLink.download = `annotated-${file.name}`;
+			document.body.appendChild(downloadLink);
+			downloadLink.click();
+			document.body.removeChild(downloadLink);
+
+			setTimeout(() => URL.revokeObjectURL(modifiedPdfUrl), 1000);
 		} catch (error) {
 			console.error("Error exporting PDF:", error);
 		} finally {

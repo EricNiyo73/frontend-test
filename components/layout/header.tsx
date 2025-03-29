@@ -17,7 +17,7 @@ export default function Header() {
 								<path d="m22 10-7.5 7.5L13 16" />
 							</svg>
 						</div>
-						<span className="text-lg font-bold text-jacarta-700 dark:text-white">DocSign</span>
+						<span className="text-lg font-bold text-jacarta-700 dark:text-white">NEDocSign</span>
 					</Link>
 
 					<div className="flex items-center gap-4">
