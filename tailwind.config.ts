@@ -1,0 +1,309 @@
+import type { Config } from "tailwindcss";
+const config: Config = {
+	darkMode: ["class"],
+	content: ["./pages/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}", "./app/**/*.{js,ts,jsx,tsx,mdx}", "*.{js,ts,jsx,tsx,mdx}"],
+	theme: {
+		screens: {
+			sm: "575px",
+			md: "768px",
+			lg: "1025px",
+			xl: "1202px",
+		},
+		fontFamily: {
+			display: ['CalSans-SemiBold"', "sans-serif"],
+			body: ['DM Sans"', "sans-serif"],
+		},
+		container: {
+			center: true,
+			padding: "1rem",
+		},
+		colors: {
+			transparent: "transparent",
+			current: "currentColor",
+			white: "#ffffff",
+			accent: "#f36a46",
+			"accent-dark": "#ff8f71",
+			"raisin-black": "#242124",
+			"accent-light": "#ff9a7c",
+			"accent-lighter": "#f36a46",
+			"light-base": "#f5f8fa",
+			green: "#10b981",
+			orange: "#FEB240",
+			"orange-bright": "#FA6D1E",
+			"orange-100": "#fffaf0",
+			"orange-500": "#ffa500",
+			red: "#EF4444",
+			yellow: "#FBBF24",
+			blue: "#428AF8",
+			gray: {
+				"50": "#F9FAFB",
+				"100": "#F3F4F6",
+				"200": "#E5E7EB",
+				"300": "#D1D5DB",
+				"400": "#9CA3AF",
+				"500": "#6B7280",
+				"600": "#4B5563",
+				"700": "#374151",
+				"800": "#1F2937",
+			},
+			jacarta: {
+				"50": "#F4F4F6",
+				"100": "#E7E8EC",
+				"200": "#C4C5CF",
+				"300": "#A1A2B3",
+				"400": "#7D7F96",
+				"500": "#5A5D79",
+				"600": "#363A5D",
+				"700": "#131740",
+				"800": "#101436",
+				"900": "#0D102D",
+				base: "#5A5D79",
+			},
+		},
+		boxShadow: {
+			none: "none",
+			sm: "0px 1px 2px 0px rgba(13, 16, 45, 0.1)",
+			base: "0px 1px 2px -1px rgba(13, 16, 45, 0.1), 0px 2px 4px 0px rgba(13, 16, 45, 0.1)",
+			md: "0px 2px 4px -2px rgba(13, 16, 45, 0.1), 0px 4px 6px -1px rgba(13, 16, 45, 0.1)",
+			lg: "0px 4px 6px -4px rgba(13, 16, 45, 0.1), 0px 10px 15px -3px rgba(13, 16, 45, 0.1)",
+			xl: "0px 8px 10px -6px rgba(13, 16, 45, 0.1), 0px 20px 25px -5px rgba(13, 16, 45, 0.1)",
+			"2xl": "0px 25px 50px -12px rgba(13, 16, 45, 0.1), 0px 12px 24px 0px rgba(13, 16, 45, 0.1)",
+			"accent-volume": "5px 5px 10px rgba(213, 106, 213, 0.25), inset 2px 2px 6px #f08d8d, inset -5px -5px 10px #e43636",
+			"white-volume": "5px 5px 10px rgba(213, 106, 212, 0.25), inset 2px 2px 6px #EEF1F9, inset -5px -5px 10px #DFE3EF",
+		},
+		fontSize: {
+			xxs1: "0.5rem",
+			xxs: [
+				"0.625rem",
+				{
+					lineHeight: "normal",
+				},
+			],
+			xs: [
+				"0.75rem",
+				{
+					lineHeight: "normal",
+				},
+			],
+			"2xs": [
+				"0.8125rem",
+				{
+					lineHeight: "normal",
+				},
+			],
+			sm: [
+				"0.875rem",
+				{
+					lineHeight: "normal",
+				},
+			],
+			base: [
+				"1rem",
+				{
+					lineHeight: "normal",
+				},
+			],
+			md: [
+				"1.125rem",
+				{
+					lineHeight: "normal",
+				},
+			],
+			lg: [
+				"1.25rem",
+				{
+					lineHeight: "1.5",
+				},
+			],
+			xl: [
+				"1.5rem",
+				{
+					lineHeight: "normal",
+				},
+			],
+			"2xl": [
+				"1.75rem",
+				{
+					lineHeight: "normal",
+				},
+			],
+			"3xl": [
+				"2rem",
+				{
+					lineHeight: "normal",
+				},
+			],
+			"4xl": [
+				"2.25rem",
+				{
+					lineHeight: "normal",
+				},
+			],
+			"5xl": [
+				"2.5rem",
+				{
+					lineHeight: "normal",
+				},
+			],
+			"6xl": [
+				"3.5rem",
+				{
+					lineHeight: "normal",
+				},
+			],
+			"7xl": [
+				"4.25rem",
+				{
+					lineHeight: "normal",
+				},
+			],
+		},
+		extend: {
+			borderRadius: {
+				lg: "var(--radius)",
+				md: "calc(var(--radius) - 2px)",
+				sm: "calc(var(--radius) - 4px)",
+				"2lg": "0.625rem",
+				"2.5xl": "1.25rem",
+			},
+			transitionProperty: {
+				height: "height",
+				width: "width",
+			},
+			animation: {
+				fly: "fly 6s cubic-bezier(0.75, 0.02, 0.31, 0.87) infinite",
+				marquee: "marquee 60s linear infinite",
+				marqueeRight: "marqueeRight 60s linear infinite",
+				"marquee-vertical": "marqueeVertical 10s linear infinite",
+				"marquee-up": "marqueeUp 3s linear infinite",
+				heartBeat: "heartBeat 1s cubic-bezier(0.75, 0.02, 0.31, 0.87) infinite",
+				progress: "progress 5s linear",
+				"spin-slow": "spin 10s linear infinite",
+				gradient: "gradient 6s linear infinite",
+				gradientDiagonal: "gradientDiagonal 6s linear infinite",
+				paused: "none",
+			},
+			keyframes: {
+				fly: {
+					"0%, 100%": {
+						transform: "translateY(5%)",
+					},
+					"50%": {
+						transform: "translateY(0)",
+					},
+				},
+				marquee: {
+					"0%": {
+						transform: "translateX(0)",
+					},
+					to: {
+						transform: "translateX(-2322px)",
+					},
+				},
+				marqueeRight: {
+					"0%": {
+						transform: "translateX(-2322px)",
+					},
+					to: {
+						transform: "translateX(0)",
+					},
+				},
+				marqueeVertical: {
+					"0%": {
+						transform: "translateY(0)",
+					},
+					"100%": {
+						transform: "translateY(-100%)",
+					},
+				},
+				marqueeUp: {
+					"0%": {
+						transform: "translateY(0)",
+					},
+					"100%": {
+						transform: "translateY(-100%)",
+					},
+				},
+				heartBeat: {
+					"0%, 40%, 80%, 100%": {
+						transform: "scale(1.1)",
+					},
+					"20%, 60%": {
+						transform: "scale(.8)",
+					},
+				},
+				progress: {
+					"0%": {
+						width: "0%",
+					},
+					"100%": {
+						width: "100%",
+					},
+				},
+				gradient: {
+					"100%": {
+						backgroundPosition: "200% center",
+					},
+				},
+				gradientDiagonal: {
+					"100%": {
+						backgroundPosition: "200% center",
+					},
+				},
+			},
+			colors: {
+				border: "hsl(var(--border))",
+				input: "hsl(var(--input))",
+				ring: "hsl(var(--ring))",
+				background: "hsl(var(--background))",
+				foreground: "hsl(var(--foreground))",
+				primary: {
+					DEFAULT: "hsl(var(--primary))",
+					foreground: "hsl(var(--primary-foreground))",
+				},
+				secondary: {
+					DEFAULT: "hsl(var(--secondary))",
+					foreground: "hsl(var(--secondary-foreground))",
+				},
+				destructive: {
+					DEFAULT: "hsl(var(--destructive))",
+					foreground: "hsl(var(--destructive-foreground))",
+				},
+				muted: {
+					DEFAULT: "hsl(var(--muted))",
+					foreground: "hsl(var(--muted-foreground))",
+				},
+				accent: {
+					DEFAULT: "hsl(var(--accent))",
+					foreground: "hsl(var(--accent-foreground))",
+				},
+				popover: {
+					DEFAULT: "hsl(var(--popover))",
+					foreground: "hsl(var(--popover-foreground))",
+				},
+				card: {
+					DEFAULT: "hsl(var(--card))",
+					foreground: "hsl(var(--card-foreground))",
+				},
+				chart: {
+					"1": "hsl(var(--chart-1))",
+					"2": "hsl(var(--chart-2))",
+					"3": "hsl(var(--chart-3))",
+					"4": "hsl(var(--chart-4))",
+					"5": "hsl(var(--chart-5))",
+				},
+			},
+		},
+		customGroups: {
+			names: ["dropdown"],
+		},
+	},
+	variants: {
+		display: ["children", "children-not"],
+	},
+	corePlugins: {
+		visibility: false,
+	},
+	plugins: [require("@tailwindcss/forms"), require("tailwindcss-custom-groups"), require("tailwindcss-animate")],
+};
+export default config;
