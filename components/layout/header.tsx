@@ -3,16 +3,9 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
-import { useState, useEffect } from "react";
 import { handleDarkMode } from "@/utils/handleDrakMode";
 
 export default function Header() {
-	const [mounted, setMounted] = useState(false);
-
-	useEffect(() => {
-		setMounted(true);
-	}, []);
-
 	return (
 		<header className="sticky top-0 z-40 w-full border-b border-jacarta-100 bg-white dark:border-jacarta-700 dark:bg-jacarta-800">
 			<div className="container">
@@ -28,17 +21,15 @@ export default function Header() {
 					</Link>
 
 					<div className="flex items-center gap-4">
-						{mounted && (
-							<div className="pr-3">
-								<button
-									onClick={() => handleDarkMode()}
-									className=" md:flex  cursor-pointer js-dark-mode-trigger group ml-2 flex h-10 w-10 items-center justify-center rounded-full border border-jacarta-100 bg-white transition-colors hover:border-transparent hover:bg-accent-lighter  dark:border-transparent dark:bg-white/[.15] dark:hover:bg-accent-lighter"
-								>
-									<Moon className="dark:hidden text-jacarta-700 fill-jacarta-700 w-4 group-hover:text-white group-hover:fill-white" />
-									<Sun className="w-6 hidden dark:block dark:text-white" />
-								</button>
-							</div>
-						)}
+						<div className="pr-3">
+							<button
+								onClick={() => handleDarkMode()}
+								className=" md:flex  cursor-pointer js-dark-mode-trigger group ml-2 flex h-10 w-10 items-center justify-center rounded-full border border-jacarta-100 bg-white transition-colors hover:border-transparent hover:bg-accent-lighter  dark:border-transparent dark:bg-white/[.15] dark:hover:bg-accent-lighter"
+							>
+								<Moon className="dark:hidden text-jacarta-700 fill-jacarta-700 w-4 group-hover:text-white group-hover:fill-white" />
+								<Sun className="w-6 hidden dark:block dark:text-white" />
+							</button>
+						</div>
 
 						<Button className="bg-accent-lighter hover:bg-accent-lighter-dark text-white">Sign Up Free</Button>
 					</div>
