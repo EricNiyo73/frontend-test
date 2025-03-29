@@ -59,19 +59,37 @@ export default function AnnotationLayer({ annotations, scale }: AnnotationLayerP
 							</div>
 						);
 					case "signature":
-						return (
-							<div
-								key={index}
-								className="absolute border border-dashed border-jacarta-400 p-2 bg-white/50"
-								style={{
-									left: x,
-									top: y,
-									pointerEvents: "auto",
-								}}
-							>
-								<div className="text-sm italic text-jacarta-600">Signature</div>
-							</div>
-						);
+						if (annotation.content && annotation.content.startsWith("data:image/")) {
+							return (
+								<div
+									key={index}
+									className="absolute"
+									style={{
+										left: x,
+										top: y,
+										pointerEvents: "auto",
+									}}
+								>
+									<img src={annotation.content} alt="Signature" style={{ maxWidth: "200px", maxHeight: "100px" }} />
+								</div>
+							);
+						} else {
+							return (
+								<div
+									key={index}
+									className="absolute border border-dashed border-jacarta-400 p-2 bg-white/50"
+									style={{
+										left: x,
+										top: y,
+										width: "150px",
+										height: "40px",
+										pointerEvents: "auto",
+									}}
+								>
+									<div className="text-sm italic text-jacarta-600">Signature</div>
+								</div>
+							);
+						}
 					default:
 						return null;
 				}

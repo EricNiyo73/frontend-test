@@ -36,7 +36,6 @@ export default function DocumentViewer({ pdfUrl, currentTool, annotations, onAdd
 	const containerRef = useRef<HTMLDivElement>(null);
 	const pageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-	// Validate PDF URL
 	useEffect(() => {
 		if (!pdfUrl) {
 			console.error("No PDF URL provided to DocumentViewer");
@@ -64,7 +63,7 @@ export default function DocumentViewer({ pdfUrl, currentTool, annotations, onAdd
 				type: "signature",
 				pageIndex,
 				position: { x, y },
-				content: "Signature placeholder",
+				content: "",
 			});
 		} else if (currentTool === "highlight" || currentTool === "underline") {
 			onAddAnnotation({
@@ -90,7 +89,6 @@ export default function DocumentViewer({ pdfUrl, currentTool, annotations, onAdd
 	const zoomIn = () => setScale((prev) => Math.min(prev + 0.2, 3));
 	const zoomOut = () => setScale((prev) => Math.max(prev - 0.2, 0.6));
 
-	// If no PDF URL is provided, show an error message
 	if (!pdfUrl) {
 		return (
 			<div className="flex items-center justify-center w-full h-40 bg-white dark:bg-jacarta-800 rounded-lg shadow-md p-4">

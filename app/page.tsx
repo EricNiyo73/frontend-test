@@ -7,8 +7,8 @@ import ToolBar from "@/components/tool-bar";
 import type { AnnotationType, Annotation } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import { Download, FileText } from "lucide-react";
-// Import PDF-LIB for PDF manipulation
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
+import SignatureCanvas from "@/components/signature-canvas";
 
 const DocumentViewer = dynamic(() => import("@/components/document-viewer"), { ssr: false });
 
@@ -18,6 +18,8 @@ export default function Home() {
 	const [currentTool, setCurrentTool] = useState<AnnotationType>("highlight");
 	const [annotations, setAnnotations] = useState<Annotation[]>([]);
 	const [isExporting, setIsExporting] = useState(false);
+	const [showSignatureCanvas, setShowSignatureCanvas] = useState(false);
+	const [pendingSignaturePosition, setPendingSignaturePosition] = useState<{ pageIndex: number; x: number; y: number } | null>(null);
 
 	const handleFileUpload = (file: File) => {
 		setFile(file);
@@ -30,7 +32,39 @@ export default function Home() {
 	};
 
 	const addAnnotation = (annotation: Annotation) => {
+		if (annotation.type === "signature") {
+			setPendingSignaturePosition({
+				pageIndex: annotation.pageIndex,
+				x: annotation.position.x,
+				y: annotation.position.y,
+			});
+			setShowSignatureCanvas(true);
+			return;
+		}
+
 		setAnnotations([...annotations, annotation]);
+	};
+
+	const handleSignatureSave = (signatureData: string) => {
+		if (pendingSignaturePosition) {
+			const newSignature: Annotation = {
+				type: "signature",
+				pageIndex: pendingSignaturePosition.pageIndex,
+				position: {
+					x: pendingSignaturePosition.x,
+					y: pendingSignaturePosition.y,
+				},
+				content: signatureData,
+			};
+			setAnnotations([...annotations, newSignature]);
+			setShowSignatureCanvas(false);
+			setPendingSignaturePosition(null);
+		}
+	};
+
+	const handleSignatureCancel = () => {
+		setShowSignatureCanvas(false);
+		setPendingSignaturePosition(null);
 	};
 
 	const dataURLToBytes = async (dataURL: string) => {
@@ -54,7 +88,6 @@ export default function Home() {
 			const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 			const italicFont = await pdfDoc.embedFont(StandardFonts.HelveticaOblique);
 
-			// Process each annotation and add it to the PDF
 			for (const annotation of annotations) {
 				if (annotation.pageIndex < 0 || annotation.pageIndex >= pages.length) {
 					console.warn(`Skipping annotation at invalid page index: ${annotation.pageIndex}`);
@@ -62,12 +95,10 @@ export default function Home() {
 				}
 				const page = pages[annotation.pageIndex];
 
-				// Get page dimensions
 				const { width, height } = page.getSize();
 				const pdfX = annotation.position.x;
 				const pdfY = height - annotation.position.y;
 
-				// Add annotation based on type
 				switch (annotation.type) {
 					case "highlight":
 						page.drawRectangle({
@@ -81,7 +112,6 @@ export default function Home() {
 						break;
 
 					case "underline":
-						// Add underline annotation
 						page.drawLine({
 							start: { x: pdfX, y: pdfY },
 							end: { x: pdfX + 100, y: pdfY },
@@ -91,7 +121,6 @@ export default function Home() {
 						break;
 
 					case "comment":
-						// Draw comment icon
 						page.drawCircle({
 							x: pdfX,
 							y: pdfY,
@@ -99,15 +128,14 @@ export default function Home() {
 							color: rgb(0.4, 0.6, 0.9),
 						});
 
-						// Add comment indicator
-						page.drawText("💬", {
-							x: pdfX - 6,
-							y: pdfY - 6,
+						page.drawText("C", {
+							x: pdfX - 4,
+							y: pdfY - 4,
 							size: 10,
 							font,
+							color: rgb(1, 1, 1),
 						});
 
-						// Add comment content as a note
 						if (annotation.content) {
 							page.drawText(annotation.content, {
 								x: pdfX + 15,
@@ -127,7 +155,6 @@ export default function Home() {
 								const signatureImage = await pdfDoc.embedPng(signatureBytes);
 								const sigDims = signatureImage.scale(0.5);
 
-								// Draw the signature image
 								page.drawImage(signatureImage, {
 									x: pdfX,
 									y: pdfY - sigDims.height,
@@ -285,6 +312,12 @@ export default function Home() {
 							{pdfUrl && <DocumentViewer pdfUrl={pdfUrl} currentTool={currentTool} annotations={annotations} onAddAnnotation={addAnnotation} />}
 						</div>
 					</div>
+				</div>
+			)}
+
+			{showSignatureCanvas && (
+				<div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+					<SignatureCanvas onSave={handleSignatureSave} onCancel={handleSignatureCancel} />
 				</div>
 			)}
 		</div>
